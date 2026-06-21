@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#ff5ea8,#ff9ecf,#ffd6e7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.container{
+    z-index:2;
+}
+
+h1{
+    font-size:4rem;
+    color:white;
+    text-shadow:0 0 20px #ff007f;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{transform:scale(1);}
+    to{transform:scale(1.05);}
+}
+
+.subtitle{
+    color:white;
+    font-size:1.3rem;
+    margin:15px 0 30px;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+}
+
+button{
+    border:none;
+    padding:15px 25px;
+    border-radius:30px;
+    font-size:1rem;
+    cursor:pointer;
+    background:white;
+    color:#ff1493;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(255,255,255,.5);
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:500px;
+    background:white;
+    color:#ff1493;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(0,0,0,.3);
+    z-index:100;
+}
+
+.popup h2{
+    margin-bottom:15px;
+}
+
+.close{
+    margin-top:15px;
+    background:#ff1493;
+    color:white;
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:#ff007f;
+    animation:float linear infinite;
+    user-select:none;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎂 Happy Birthday ❤️</h1>
+    <p class="subtitle">To The Most Beautiful Girl In My Life 💖</p>
+
+    <div class="buttons">
+        <button onclick="showPopup('note1')">💌 Love Note</button>
+        <button onclick="showPopup('note2')">🌹 Why I Love You</button>
+        <button onclick="showPopup('note3')">✨ Special Wish</button>
+        <button onclick="showPopup('note4')">💕 Forever Promise</button>
+        <button onclick="showPopup('note5')">🎁 Secret Message</button>
+    </div>
+</div>
+
+<!-- POPUPS -->
+
+<div id="note1" class="popup">
+    <h2>💌 Love Note</h2>
+    <p>
+        Every day with you feels like a beautiful dream.
+        Your smile brightens my darkest days and your love
+        makes my life complete. ❤️
+    </p>
+    <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<div id="note2" class="popup">
+    <h2>🌹 Why I Love You</h2>
+    <p>
+        I love your smile, your kindness, your laugh,
+        your heart, and the way you make everything feel
+        special just by being there. 💕
+    </p>
+    <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<div id="note3" class="popup">
+    <h2>✨ Birthday Wish</h2>
+    <p>
+        May your life be filled with happiness,
+        success, endless smiles, and all the love
+        your heart can hold. 🎂💖
+    </p>
+    <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<div id="note4" class="popup">
+    <h2>💕 Forever Promise</h2>
+    <p>
+        No matter where life takes us,
+        I will always support you,
+        respect you, and cherish every memory we create together. ❤️
+    </p>
+    <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<div id="note5" class="popup">
+    <h2>🎁 Secret Message</h2>
+    <p>
+        Out of billions of people in the world,
+        my favorite person will always be YOU. 💗
+    </p>
+    <button class="close" onclick="closePopup()">Close</button>
+</div>
+
+<script>
+function showPopup(id){
+    document.getElementById(id).style.display='block';
+}
+
+function closePopup(){
+    document.querySelectorAll('.popup').forEach(p=>{
+        p.style.display='none';
+    });
+}
+
+/* Create Floating Hearts */
+function createHeart(){
+    const heart=document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML='💖';
+
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.fontSize=(Math.random()*25+15)+'px';
+    heart.style.animationDuration=(Math.random()*5+4)+'s';
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+}
+
+setInterval(createHeart,200);
+</script>
+
+</body>
+</html>
